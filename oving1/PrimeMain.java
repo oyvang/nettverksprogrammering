@@ -1,0 +1,55 @@
+package oving1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Created by GeirMorten on 27.01.14.
+ */
+public class PrimeMain {
+    private static List<Integer> primeNumbers = new ArrayList();
+
+    public static synchronized void addPrime(int n){
+        primeNumbers.add(n);
+    }
+
+    private static List<Integer> getPrimes(){
+        Collections.sort(primeNumbers);
+        return primeNumbers;
+    }
+
+    private static void soutPrimes(){
+      for(Integer n : getPrimes()){
+          System.out.println(n);
+        }
+    }
+    public static void main(String[] args) {
+        int from = 1;
+        int to = 10000000;
+
+        Prime p1 = new Prime(from, to/4);
+        Prime p2 = new Prime(to/4+1, to/3);
+        Prime p3 = new Prime(to/3+1, to/2);
+        Prime p4 = new Prime(to/2+1, to);
+
+        p1.start();
+        p2.start();
+        p3.start();
+        p4.start();
+
+        try{
+            p1.join();
+            p2.join();
+            p3.join();
+            p4.join();
+        } catch (InterruptedException e) {
+            System.out.println("Thread interrupted\n"+e);
+        }
+
+        System.out.println("Prime numbers from " + from + " to " + to);
+        soutPrimes();
+
+//        System.out.println(primeNumbers.size());
+    }
+}
