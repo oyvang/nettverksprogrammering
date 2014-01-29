@@ -12,7 +12,8 @@ public class Prime extends Thread {
     }
 
     boolean isPrime(int n) {
-        if (n%2==0) return false;  //Sjekker om det er delelig på 2
+        if(n==2)return true;
+        if (n%2==0 || n == 1) return false;  //Sjekker om det er delelig på 2
         for(int i=3;i*i<=n;i+=2) {    //vist ikke så sjekker vi alle oddetall fra 3 til sqrt(n);
             if(n%i==0)
                 return false;
