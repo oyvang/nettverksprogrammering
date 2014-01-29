@@ -26,19 +26,20 @@ public class PrimeMain {
     }
     public static void main(String[] args) {
         int from = 1;
-        int to = 10000;
-        int threads = 4;
+        int to = 100000000;
+        int threads = 7;
         ArrayList<Prime> p = new ArrayList<>();
 
         // Fordeler arbeid og oppretter tråder
         for (int i = 0; i <threads; i++) {
             p.add(new Prime(from, to, threads));
+            p.get(i).start();
             from++;
         }
-        //starter trådan
-        for (int i = 0; i <threads ; i++) {
-            p.get(i).start();
-        }
+//        //starter trådan
+//        for (int i = 0; i <threads ; i++) {
+//            p.get(i).start();
+//        }
         //Fortsetter etter at alle tråder er ferdig
         try{
             for (int i = 0; i <threads; i++) {
