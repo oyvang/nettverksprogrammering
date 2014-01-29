@@ -31,9 +31,9 @@ public class PrimeMain {
         ArrayList<Prime> p = new ArrayList<>();
 
         // Fordeler arbeid og oppretter tråder
-        for (int i = threads; i >0; i--) {
-            p.add(new Prime(from, to/i));
-            from = (to/i) +1;
+        for (int i = 0; i <threads; i++) {
+            p.add(new Prime(from, to, threads));
+            from++;
         }
         //starter trådan
         for (int i = 0; i <threads ; i++) {
@@ -49,9 +49,9 @@ public class PrimeMain {
             System.out.println("Thread interrupted\n"+e);
         }
 
-        System.out.println("Prime numbers from " + from + " to " + to);
-        soutPrimes();
+//        System.out.println("Prime numbers from " + from + " to " + to);
+//        soutPrimes();
 
-//        System.out.println(primeNumbers.size());
+        System.out.println(primeNumbers.size());
     }
 }

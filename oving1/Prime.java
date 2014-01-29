@@ -4,11 +4,12 @@ package oving1;
  * Created by GeirMorten on 27.01.14.
  */
 public class Prime extends Thread {
-    private int from, to;
+    private int from, to, interval;
 
-    public Prime (int from, int to){
+    public Prime (int from, int to, int interval){
         this.from = from;
         this.to = to;
+        this.interval = interval;
     }
 
     boolean isPrime(int n) {
@@ -20,9 +21,9 @@ public class Prime extends Thread {
         }
         return true;
     }
-
+    // kjører gjennom alle tall slik at alle tråder får sih like store tall å jobbe med
     public void run () {
-        for (int i = from; i <=to ; i++) {
+        for (int i = from; i <=to ; i+= interval) {
         if(isPrime(i)) PrimeMain.addPrime(i);
         }
     }
