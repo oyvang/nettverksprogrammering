@@ -26,8 +26,8 @@ public class PrimeMain {
     }
     public static void main(String[] args) {
         int from = 1;
-        int to = 100000000;
-        int threads = 7;
+        int to = 10000000;
+        int threads = 4;
         ArrayList<Prime> p = new ArrayList<>();
 
         // Fordeler arbeid og oppretter tråder
@@ -50,9 +50,9 @@ public class PrimeMain {
             System.out.println("Thread interrupted\n"+e);
         }
 
-//        System.out.println("Prime numbers from " + from + " to " + to);
-//        soutPrimes();
+        System.out.println("Prime numbers from " + from + " to " + to);
+        soutPrimes();
 
-        System.out.println(primeNumbers.size());
+        System.out.println("\nAntall primtall: "+primeNumbers.size());
     }
 }
