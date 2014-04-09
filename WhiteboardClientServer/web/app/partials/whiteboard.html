@@ -1,0 +1,16 @@
+<h3> Whiteboard </h3>
+
+<div>Status: {{status}}</div><br>
+<div>Last remote painter: {{remotePainter}}</div><br>
+
+<select ng-model="color" ng-options="c.name for c in colors"></select><br>
+
+<section style="float: bottom">
+    <textarea id="chatVindu" rows="15" cols="50" readonly="readonly"></textarea>
+</section>
+
+<section style="float: bottom">
+    <input type="text" id="name" ng-model="name" placeholder="Enter your name"/>
+    <textarea type="text" id="message" ng-model="msg" placeholder="Enter message"></textarea>
+    <button ng-click="mouseClick($event)">Send</button>
+</section>
